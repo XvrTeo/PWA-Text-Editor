@@ -1,36 +1,47 @@
 const butInstall = document.getElementById('buttonInstall');
 
+let deferredPrompt;
+
 // Logic for installing the PWA
-// TODO: Add an event handler to the `beforeinstallprompt` event
+
 window.addEventListener('beforeinstallprompt', (event) => {
 
-    // Storing triggered events
-    window.deferredPrompt = event;
+    // Store the event so it can be triggered later
 
+    deferredPrompt = event;
 
-    // Removing hidden class
-    butInstall.classList.toggle('hidden', false);
-});
+    // Display install button
+    butInstall.classList.remove('hidden');
+  });
 
-// TODO: Implement a click event handler on the `butInstall` element
-butInstall.addEventListener('click', async () => {
-    const promptEvent = window.deferredPrompt;
-
-    if (!promptEvent) {
-        return;
+  // Handle click event on the install button
+  butInstall.addEventListener('click', async () => {
+    // If there is no deferred prompt, return
+    if (!deferredPrompt) {
+      return;
     }
 
-    // Display the prompt
-    await promptEvent.prompt();
+    // Show the install prompt
+    deferredPrompt.prompt();
 
-    // Resetting the deferred prompt variable
-    window.deferredPrompt = null;
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
 
-    butInstall.classList.toggle('hidden', true);
+    // Reset the deferred prompt variable
+    deferredPrompt = null;
 
-});
+    // Hide the install button
+    butInstall.classList.add('hidden');
 
-// TODO: Add an handler for the `appinstalled` event
-window.addEventListener('appinstalled', (event) => {
-    window.deferredPrompt = null;
-});
+    // Log the outcome of the user's response
+    console.log(`User ${outcome === 'accepted' ? 'accepted' : 'rejected'} the install prompt`);
+  });
+
+  // Handle app installed event
+  window.addEventListener('appinstalled', (event) => {
+    // Clear the deferred prompt variable
+    deferredPrompt = null;
+
+    // Log the event details
+    console.log('App was installed', event);
+  });
