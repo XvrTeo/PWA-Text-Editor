@@ -4,9 +4,11 @@
 
 This app is a single-page text editor that meets the PWA criteria and has multiple data persistence techniques to ensure redundancy in case a particular option is not supported by the browser. It also functions offline.
 
+The technology used are HTML, CSS, JavaScript, Node.js, Express.js, Webpack Plugins, and Heroku for deployment
+
 ## Usage
 
-1. **TO-DO**
+1. Please click on the deployed application link, after which you will click on the install button to start the installation process.
 
 ### Links:
 

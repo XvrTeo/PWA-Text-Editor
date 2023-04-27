@@ -1,12 +1,14 @@
 import { openDB } from 'idb';
 
 const initdb = async () =>
+// Creating new database named 'jate'
   openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
         console.log('jate database already exists');
         return;
       }
+      // Creating a new object store with key name of 'id'
       db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
       console.log('jate database created');
     },
