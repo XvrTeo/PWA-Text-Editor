@@ -14,7 +14,9 @@ const manifestPlugin = new WebpackPwaManifest({
   fingerprints: false,
   inject: true,
   name: 'J.A.T.E.',
-  description: 'Edit text',
+  short_name: 'J.A.T.E.',
+  description: 'Just Another Text Editor',
+  display: "standalone",
   start_url: './',
   publicPath: './',
   icons: [
@@ -41,42 +43,42 @@ module.exports = () => {
     },
     plugins: [
 
-// Add the HTML Webpack Plugin to generate an index.html file
+      // Add the HTML Webpack Plugin to generate an index.html file
 
-new HtmlWebpackPlugin({
-  template: './index.html',
-  title: 'J.A.T.E'
-}),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'J.A.T.E'
+      }),
 
-// Generates the service worker file via serviceWorkerPlugin
+      // Generates the service worker file via serviceWorkerPlugin
 
-serviceWorkerPlugin,
+      serviceWorkerPlugin,
 
-// Generates the manifest file via manifestPlugin
+      // Generates the manifest file via manifestPlugin
 
-manifestPlugin,
+      manifestPlugin,
 
     ],
 
     module: {
       rules: [
-// Add the CSS loaders
-{
-  test: /\.css$/i,
-  use: ['style-loader', 'css-loader'],
-},
-// Add the Babel loader
-{
-  test: /\.m?js$/,
-  exclude: /node_modules/,
-  use: {
-    loader: 'babel-loader',
-    options: {
-      presets: ['@babel/preset-env'],
-      plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
-    },
-  },
-},
+        // Add the CSS loaders
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        // Add the Babel loader
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
       ],
     },
   };
