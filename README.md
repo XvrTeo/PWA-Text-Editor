@@ -8,9 +8,13 @@ The technology used are HTML, CSS, JavaScript, Node.js, Express.js, Webpack Plug
 
 ## Usage
 
-1. Please click on the deployed application link, after which you will click on the install button to start the installation process.
+Please click on the deployed application link, after which you will click on the install button to start the installation process. The J.A.T.E. app will then be installed onto your desktop.
+
+![Screenshot 1](./images/JATE-1.jpg)
+
+![Screenshot 2](./images/JATE-2.jpg)
 
 ### Links:
 
-1. URL of the functional, deployed application: **TO-DO**
+1. URL of the functional, deployed application: https://xavier-text-editor.herokuapp.com/
 2. URL of the GitHub repository: https://github.com/XvrTeo/PWA-Text-Editor
