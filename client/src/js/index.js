@@ -2,8 +2,12 @@ import { Workbox } from 'workbox-window';
 import Editor from './editor';
 import './database';
 import '../css/style.css';
+import { header } from './header';
 
 const main = document.querySelector('#main');
+const headerDiv = document.createElement('div');
+headerDiv.innerHTML = header;
+main.appendChild(headerDiv);
 main.innerHTML = '';
 
 const loadSpinner = () => {
